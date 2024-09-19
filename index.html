@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas de Salas</title>
+    <style>
+* { 
+    background-color: #e0f7fa;
+}
+body { 
+    font-family: Arial, sans-serif; 
+    background-color: #e0f7fa;
+    animation: sla 5s infinite;
+}
+.container { 
+    width: 800px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    background: #ffffff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+h1 { 
+    text-align: center; 
+    color: #00796b;
+    animation: sla 5s infinite;
+}
+form { 
+    margin-bottom: 20px; 
+}
+input, select, textarea { 
+    width: 100%; 
+    padding: 10px; 
+    margin: 10px 0; 
+    border: 1px solid #b2dfdb;
+}
+button { 
+    padding: 10px; 
+    background-color: #4db6ac; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+}
+button:hover { 
+    background-color: #00897b; 
+}
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-bottom: 20px; 
+}
+table th, table td { 
+    border: 1px solid #ddd; 
+    padding: 8px; 
+}
+table th { 
+    background-color: #b2dfdb; 
+}
+@keyframes sla {
+    0% {color: #004d40;}
+    50% {color: #00796b;}
+    60% {color: #4db6ac;}
+    100% {color: #004d40;}
+}
+.hover-effect {
+    transition: color 0.5s ease-in-out;
+}
+.hover-effect:hover {
+    color: #00796b;
+}
+.glow {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    animation: glow 1s infinite alternate;
+}
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+}
+.underline::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #004d40;
+    transition: width 0.5s;
+}
+.underline:hover::after {
+    width: 100%;
+}
+.rotate {
+    display: inline-block;
+    transition: transform 0.5s;
+}
+.rotate:hover {
+    transform: rotate(360deg);
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="hover-effect">Sistema de Reservas de Salas</h1>
+
+    <!-- Seção de Login -->
+    <h2 class="underline">Login</h2>
+    <form method="POST" action="login.php">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="senha" placeholder="Senha" required>
+        <button type="submit" class="rotate">Login</button>
+    </form>
+
+    <!-- Seção de Cadastro de Usuário -->
+    <h2 class="underline">Cadastro de Usuário</h2>
+    <form method="POST" action="cadastro.php">
+        <input type="text" name="nome" placeholder="Nome" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="senha" placeholder="Senha" required>
+        <button type="submit" class="rotate">Cadastrar</button>
+    </form>
+
+    <!-- Seção de Cadastro de Salas -->
+    <h2 class="underline">Cadastro de Sala</h2>
+    <form method="POST" action="cadastro_sala.php">
+        <input type="text" name="nome" placeholder="Nome da Sala" required>
+        <input type="text" name="localizacao" placeholder="Localização">
+        <input type="number" name="capacidade" placeholder="Capacidade">
+        <textarea name="recursos" placeholder="Recursos disponíveis"></textarea>
+        <button type="submit" class="rotate">Cadastrar Sala</button>
+    </form>
+
+    <!-- Seção de Listagem de Salas -->
+    <h2 class="underline">Salas Disponíveis</h2>
+    <div>
+        <?php include 'listar_salas.php'; ?>
+    </div>
+
+    <!-- Seção de Reservas -->
+    <h2 class="underline">Reservar Sala</h2>
+    <form method="POST" action="reservar_sala.php">
+        <select name="sala_id" required>
+            <option value="">Selecione a Sala</option>
+            <?php
+            // Inclui o código PHP que lista as salas no dropdown
+            include 'db.php';
+            $sql = "SELECT id, nome FROM salas";
+            $result = $conn->query($sql);
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value=\"{$row['id']}\">{$row['nome']}</option>";
+            }
+            ?>
+        </select>
+        <input type="date" name="data" required>
+        <input type="time" name="hora_inicio" required>
+        <input type="time" name="hora_fim" required>
+        <button type="submit" class="rotate">Reservar</button>
+    </form>
+
+    <!-- Seção de Exibição de Reservas -->
+    <h2 class="underline">Calendário de Reservas</h2>
+    <div>
+        <?php include 'calendario_reservas.php';?>
+    </div>
+
+</div>
+
+</body>
+</html>
