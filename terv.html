@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas de Salas</title>
+    <style>
+* { 
+    background-color: #e0f7fa;
+}
+body { 
+    text-shadow: 10px 8ox 30px solid black;
+    font-family: Arial, sans-serif; 
+    background-color: #e0f7fa;
+    animation: sla 5s infinite;
+}
+.container { 
+    width: 800px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    background: #ffffff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+h1 { 
+    text-align: center; 
+    color: #00796b;
+    animation: sla 5s infinite;
+    text-shadow: 10px 8ox 30px solid black;
+}
+form { 
+    margin-bottom: 20px; 
+}
+input, select, textarea { 
+    width: 300px; 
+    padding: 10px; 
+    margin: 10px 0; 
+    border: 1px solid #b2dfdb;
+    border-radius: 40px;
+    text-shadow: 5px solid black;
+}
+button { 
+    padding: 10px; 
+    background-color: #4db6ac; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+}
+button:hover { 
+    background-color: #00897b; 
+}
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-bottom: 20px; 
+}
+table th, table td { 
+    border: 1px solid #ddd; 
+    padding: 8px; 
+}
+table th { 
+    background-color: #b2dfdb; 
+}
+@keyframes sla {
+    0% {color: #004d40;}
+    50% {color: #00796b;}
+    60% {color: #4db6ac;}
+    100% {color: #004d40;}
+}
+.hover-effect {
+    transition: color 0.5s ease-in-out;
+}
+.hover-effect:hover {
+    color: #00796b;
+}
+.glow {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    animation: glow 1s infinite alternate;
+}
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+}
+.underline::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #004d40;
+    transition: width 0.5s;
+}
+.underline:hover::after {
+    width: 100%;
+}
+.rotate {
+    display: inline-block;
+    transition: transform 0.5s;
+    border-radius: 90px;
+    
+}
+.rotate:hover {
+    transform: rotate(360deg);
+}
+
+#cadastro {
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+   <!-- Seção de Cadastro de Usuário -->
+   <h2 id="cadastro" class="underline">Cadastro de Usuário</h2>
+   <form method="POST" action="cadastro.php">
+       <input type="text" name="nome" placeholder="Nome" required>
+       <input type="email" name="email" placeholder="Email" required>
+       <input type="password" name="senha" placeholder="Senha" required>
+       <button type="submit" class="rotate">Cadastrar</button>
+   </form>
+
+</body>
+
+</html>
