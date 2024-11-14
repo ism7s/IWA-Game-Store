@@ -3,125 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Reservas de Salas</title>
+    <title>Login</title>
     <style>
-        * { 
-            background-color: #e0f7fa;
+        body {
+            background-image: url(pexels-pavel-danilyuk-7776877.jpg);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-size: cover;
         }
-        body { 
-            font-family: Arial, sans-serif; 
-            background-color: #e0f7fa;
-            animation: sla 5s infinite;
-        }
-        .container { 
-            width: 800px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            background: #ffffff; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-        }
-        h1 { 
-            text-align: center; 
-            color: #00796b;
-            animation: sla 5s infinite;
-        }
-        h2.underline {
-            text-align: center;
-        }
-        form { 
-            margin-bottom: 20px; 
-            text-align: center;
-        }
-        input, select, textarea { 
-            width: 50%; 
-            padding: 10px; 
-            margin: 10px 0; 
-            border: 1px solid #b2dfdb;
-            border-radius: 30px;
-            display: block; 
-            margin-left: auto; 
-            margin-right: auto; 
-        }
-        .button-container {
+
+        .grupo-botoes {
             display: flex;
-            justify-content: center;
-            gap: 10px; /* Espaçamento entre os botões */
+            justify-content: space-between;
+            margin-top: 30px;
         }
-        button { 
-            width: 90px;
-            height: 37px;
-            padding: 10px; 
-            background-color: #4db6ac; 
-            color: white;  
+
+        h2 {
+            background-color: rgba(5, 139, 133, 0.267);
+            border: 2px solid #0003034d;
+            border-radius: 22px;
+            padding: 10px;
+            animation: sla 5s infinite;
+            font-size: 40px;
             text-align: center;
-            transition: background-color 0.3s;
-            border-radius: 30px;
-            border: 1px solid gray;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            font-size: 12px;
-            cursor: pointer;
-            text-shadow: #000000;
+            margin-top: auto;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
-        button:hover { 
-            background-color: #00897b; 
-        }
-        table { 
-            width: 100%; 
-            margin-bottom: 20px; 
-        }
-        table th, table td { 
-            border: 1px solid #ddd; 
-            padding: 8px; 
-        }
-        table th { 
-            background-color: #b2dfdb; 
-        }
+
         @keyframes sla {
-            0% {color: #004d40;}
-            50% {color: #00796b;}
-            60% {color: #4db6ac;}
-            100% {color: #004d40;}
+            0% { color: #0f8fda93; }
+            30% { color: #259abd8c; }
+            50% { color: #09a8bd; }
+            80% { color: #0378e669; }
+            90% { color: #0bacc9; }
+            100% { color: #076279; }
         }
-        .hover-effect {
-            transition: color 0.5s ease-in-out;
+
+        .container-login {
+            font-size: 17px;
+            color: #ffffff;
+            border: 4px solid #076279;
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
-        .hover-effect:hover {
-            color: #00796b;
+
+        .grupo-input {
+            margin-bottom: 15px;
+            width: 94%;
         }
-        .underline::after {
-            content: '';
+
+        label {
             display: block;
-            width: 0;
-            height: 2px;
-            background: #004d40;
-            transition: width 0.5s;
+            margin-bottom: 5px;
         }
-        .underline:hover::after {
+
+        input[type="text"],
+        input[type="password"] {
             width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            background: #0c2a2e62;
+            color: #00fff2;
         }
+
+        input:hover {
+            color: #ffffff;
+            background-color: #0bacc97e;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #09a8bd;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-right: 3px;
+        }
+
+        button:hover {
+            background-color: #07a1b5af;
+        }
+
+        .esqueci-senha {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .esqueci-senha a {
+            color: #09a8bd;
+            text-decoration: none;
+        }
+        
+        .esqueci-senha a:hover {
+            text-decoration: underline;
+            color: #0dc1e0;
+        }
+
+        @media (max-width:600px){
+            .caixa-um{
+                background: #010c0b;
+            }
+        }
+
+        @media (min-width:900px){
+            .caixa-dois{
+                background: #010c0b;
+            }
+        }
+
+        @media (max-width:480px) {
+            
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1 class="hover-effect">Reservar Salas</h1>
-    
-        <!-- Seção de Login -->
-        <h2 class="underline">Login</h2>
-        <form method="POST" action="login.php">
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="senha" placeholder="Senha" required>
-            <div class="button-container">
-                <button type="submit" class="button">Login</button>
-                <button type="button" class="button" onclick="location.href='terv.html'">Cadastre-se</button>
+    <h2>TY</h2>
+    <div class="container-login">
+        <form>
+            <div class="grupo-input">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" required>
             </div>
+            <div class="grupo-input">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="grupo-botoes">
+                <button type="submit">Entrar</button>
+                <button type="button" onclick="window.location.href='cadastro.html';">Cadastro</button>
+            </div>
+            <div class="esqueci-senha">
+                <a href="#">Esqueceu a senha?</a>
+            </div>
+
+            <img src="" alt="">
         </form>
     </div>
-
-
     
-
 </body>
 </html>
