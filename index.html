@@ -101,35 +101,18 @@
             color: #09a8bd;
             text-decoration: none;
         }
-        
+
         .esqueci-senha a:hover {
             text-decoration: underline;
             color: #0dc1e0;
         }
-
-        @media (max-width:600px){
-            .caixa-um{
-                background: #010c0b;
-            }
-        }
-
-        @media (min-width:900px){
-            .caixa-dois{
-                background: #010c0b;
-            }
-        }
-
-        @media (max-width:480px) {
-            
-        }
-
     </style>
 </head>
 <body>
 
     <h2>TY</h2>
     <div class="container-login">
-        <form>
+        <form id="loginForm">
             <div class="grupo-input">
                 <label for="username">Usuário:</label>
                 <input type="text" id="username" name="username" required>
@@ -145,10 +128,41 @@
             <div class="esqueci-senha">
                 <a href="#">Esqueceu a senha?</a>
             </div>
-
-            <img src="" alt="">
         </form>
     </div>
+
+    <script>
+        // Função para realizar o login
+        function loginUser(username, password, users) {
+            // Procurar o usuário correspondente no JSON
+            const user = users.find(user => user.username === username && user.password === password);
+            if (user) {
+                alert("Login bem-sucedido!");
+                // Aqui você pode redirecionar para a página principal ou outra ação após login.
+                window.location.href = "pagina_principal.html"; // Exemplo de redirecionamento
+            } else {
+                alert("Usuário ou senha inválidos.");
+            }
+        }
+
+        // Lidar com o envio do formulário
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Carregar os dados do arquivo JSON usando o fetch
+            fetch('usuarios.json')
+                .then(response => response.json())
+                .then(users => {
+                    loginUser(username, password, users); // Chama a função de login com os dados do JSON
+                })
+                .catch(error => {
+                    console.error("Erro ao carregar o arquivo JSON:", error);
+                    alert("Erro ao verificar o login.");
+                });
+        });
+    </script>
     
 </body>
 </html>
