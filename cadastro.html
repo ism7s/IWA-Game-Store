@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <style>
+        body {
+            background-image: url(pexels-pavel-danilyuk-7776877.jpg);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-size: cover;
+        }
+
+        .grupo-botoes {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        h2 {
+            background-color: rgba(5, 139, 133, 0.267);
+            border: 2px solid #0003034d;
+            border-radius: 22px;
+            padding: 10px;
+            animation: sla 5s infinite;
+            font-size: 40px;
+            text-align: center;
+            margin-top: auto;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        @keyframes sla {
+            0% { color: #0f8fda93; }
+            30% { color: #259abd8c; }
+            50% { color: #09a8bd; }
+            80% { color: #0378e669; }
+            90% { color: #0bacc9; }
+            100% { color: #076279; }
+        }
+
+        .container-login {
+            font-size: 17px;
+            color: #ffffff;
+            border: 4px solid #076279;
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .grupo-input {
+            margin-bottom: 15px;
+            width: 94%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            background: #0c2a2e62;
+            color: #00fff2;
+        }
+
+        input:hover {
+            color: #ffffff;
+            background-color: #0bacc97e;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #09a8bd;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-right: 3px;
+        }
+
+        button:hover {
+            background-color: #07a1b5af;
+        }
+
+        .esqueci-senha {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .esqueci-senha a {
+            color: #09a8bd;
+            text-decoration: none;
+        }
+        
+        .esqueci-senha a:hover {
+            text-decoration: underline;
+            color: #0dc1e0;
+        }
+
+        @media (max-width:600px){
+            .caixa-um{
+                background: #010c0b;
+            }
+        }
+
+        @media (min-width:900px){
+            .caixa-dois{
+                background: #010c0b;
+            }
+        }
+
+        @media (max-width:480px) {
+            
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Cadastro</h2>
+    <div class="container-login">
+        <form>
+            <div class="grupo-input">
+                <label for="username">Nome de Usuário:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="grupo-input">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="grupo-input">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="grupo-input">
+                <label for="confirm-password">Confirmar Senha:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <div class="grupo-botoes">
+                <button type="submit">Cadastrar</button>
+                <button type="button" onclick="window.location.href='pagina_de_login.html';">Voltar</button>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>
