@@ -107,30 +107,13 @@
             text-decoration: underline;
             color: #0dc1e0;
         }
-
-        @media (max-width:600px){
-            .caixa-um{
-                background: #010c0b;
-            }
-        }
-
-        @media (min-width:900px){
-            .caixa-dois{
-                background: #010c0b;
-            }
-        }
-
-        @media (max-width:480px) {
-            
-        }
-
     </style>
 </head>
 <body>
 
     <h2>Cadastro</h2>
     <div class="container-login">
-        <form>
+        <form id="cadastroForm">
             <div class="grupo-input">
                 <label for="username">Nome de Usuário:</label>
                 <input type="text" id="username" name="username" required>
@@ -153,6 +136,62 @@
             </div>
         </form>
     </div>
+
+    <script>
+        // Função para validar se o nome de usuário ou e-mail já existem no JSON
+        function userExists(username, email, users) {
+            return users.some(user => user.username === username || user.email === email);
+        }
+
+        // Função para simular o cadastro de usuário (salvar os dados em um JSON fictício)
+        function registerUser(username, email, password, users) {
+            // Verifica se o usuário ou o e-mail já existem
+            if (userExists(username, email, users)) {
+                alert("Nome de usuário ou e-mail já estão em uso.");
+                return false;
+            }
+            
+            // Adiciona o novo usuário ao "banco de dados"
+            users.push({ username, email, password });
+            alert("Cadastro bem-sucedido!");
+
+            // Aqui você pode redirecionar o usuário ou limpar o formulário
+            window.location.href = "login.html"; // Exemplo de redirecionamento
+            return true;
+        }
+
+        // Lidar com o envio do formulário
+        document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Verifica se as senhas coincidem
+            if (password !== confirmPassword) {
+                alert("As senhas não coincidem.");
+                return;
+            }
+
+            // Carregar os dados do arquivo JSON simulando um "banco de dados"
+            fetch('cadastro.json')
+                .then(response => response.json())
+                .then(users => {
+                    // Tenta registrar o novo usuário
+                    if (registerUser(username, email, password, users)) {
+                        // Atualiza o arquivo JSON (em um ambiente real, você faria isso no back-end)
+                        // Aqui, você pode enviar os dados para um servidor para persistir
+                        // Exemplo: saveToDatabase(users);
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao carregar os dados dos usuários:", error);
+                    alert("Erro ao tentar fazer o cadastro.");
+                });
+        });
+    </script>
     
 </body>
 </html>
