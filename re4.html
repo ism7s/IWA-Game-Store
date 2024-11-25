@@ -9,7 +9,7 @@
 
 <body>
     <header>
-        <h1>Loja de Jogos</h1>
+        <h1>IWA Game Store</h1>
       <div class="p">   </div>
       <nav>
         <a href="jogos.html">Ínicio</a>
@@ -38,7 +38,7 @@
       <button class="b1">Adicionar ao Carrinho</button>
       <button class="b2">Comprar R$299,00</button>
     </div>
-    <div id="estoque-container" class="todos" ></div>
+   
 
     <div id="modalPagamento" class="modal">
       <div class="modal-content">
@@ -49,7 +49,11 @@
          <button onclick="window.location.href='re4fim.html';">Pix</button> 
       </div>
   </div>
-  <script src="estoque.js"> </script>
+  <div id="estoque-container">
+    <p>Estoque disponível: <span id="estoque">2</span></p>
+    <p id="estoque-msg" style="color: red; display: none;">Estoque Esgotado!</p> <!-- Mensagem de estoque esgotado -->
+  </div>
+  
   <script src="pag.js"></script>
    
     <div class="idade-info">
